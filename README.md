@@ -1,49 +1,64 @@
-Centro de investigación técnica dedicado a la orquestación de Defensa Activa, Hardening de sistemas y respuesta ante incidentes. Este laboratorio utiliza un stack contenedorizado para la detección proactiva de amenazas mediante el análisis de telemetría y logs en tiempo real.
 
-K-VØID | Advanced Defense Fortress 🛡️
+🛡️ Proyecto K-VØID: Laboratorio de Detección y Respuesta (SIEM/EDR)
 
-"Mastering the system from the core to the void."
+Esta es la versión final optimizada para tu README.md. He integrado los datos técnicos del reporte con las instrucciones de replicación en un formato de alto impacto para reclutadores.
+🛡️ Proyecto K-VØID: Laboratorio de Detección y Respuesta (SIEM/EDR)
 
-K-VØID es un ecosistema de investigación técnica enfocado en la Defensa Activa, el Hardening de infraestructuras críticas y la orquestación de seguridad bajo el marco DevSecOps. Este laboratorio implementa un clúster de monitoreo avanzado capaz de procesar telemetría en tiempo real y detectar tácticas ofensivas complejas.
-🛠️ Arquitectura del Sistema
+Este repositorio contiene las herramientas ofensivas y defensivas utilizadas para simular un entorno de Security Operations Center (SOC) profesional basado en Wazuh y contenedores Docker. El proyecto demuestra el ciclo completo de un incidente: desde la ejecución del vector de ataque hasta la ingesta de telemetría y el análisis de cumplimiento normativo.
+🚀 Componentes del Repositorio
 
-El despliegue se basa en una infraestructura de microservicios robusta:
+    ataque_recon.py: Script de Python para simular escaneos de red y vectores de fuerza bruta.
 
-    Motor de Indexación: Almacenamiento y búsqueda de eventos de seguridad a alta velocidad.
+    k-void-blocker.py: Script de respuesta automática diseñado para mitigar amenazas en tiempo real.
 
-    Wazuh Manager: Cerebro del SIEM encargado del análisis de logs y correlación de alertas.
+    ossec.conf: Configuración optimizada del agente Wazuh para monitoreo de integridad (FIM) y recolección de logs.
 
-    Dashboard K-VØID: Interfaz analítica para la visualización de incidentes y cumplimiento de normativas.
+    evidencia_recon.json: Muestra de telemetría capturada durante las fases de ataque para análisis forense.
 
-    Agentes de Host: Despliegue en endpoints para monitoreo de integridad de archivos (FIM) y detección de intrusiones.
+📊 Resultados y Telemetría SOC (Análisis del Incidente)
 
-🚀 Capacidades Implementadas
+A través de este laboratorio se logró una visibilidad profunda del comportamiento del atacante, documentada en los reportes adjuntos:
 
-    Detección de Tácticas MITRE ATT&CK: Identificación automática de comportamientos maliciosos como Disable or Modify Tools y reconocimiento de red.
+    Ingesta de Datos: 174 alertas procesadas en 60 minutos, con picos de actividad correlacionados a las ráfagas de ataque.
 
-    Gestión Segura de Infraestructura: Implementación de certificados SSL/TLS para la comunicación cifrada entre nodos y agentes.
+    Mapeo MITRE ATT&CK: Identificación precisa de tácticas de Defense Evasion:
 
-    Validación de Reglas Personalizadas: Correlación exitosa de eventos tras la ejecución de ataques simulados con scripts de Python.
+        T1078 (Valid Accounts): 6 eventos detectados.
 
-📂 Estructura del Proyecto
+        T1548.003 (Sudo and Sudo Caching): 6 eventos de elevación de privilegios.
+
+    Auditoría de Cumplimiento: Monitoreo automatizado de requisitos PCI DSS:
+
+        10.2.5: Registro de accesos a componentes del sistema (21 eventos).
+
+        10.6.1: Revisión de logs de seguridad para todos los componentes (14 eventos).
+
+🛠️ Instrucciones de Replicación
+
+Siga estos pasos para desplegar el laboratorio en cualquier entorno Linux basado en Debian/Ubuntu:
+1. Despliegue del Wazuh Manager
+
+Instale la infraestructura central mediante contenedores Docker (Single-node):
 Bash
 
-├── core-siem/          # Orquestación Docker & Configuraciones SSL
-├── agent-configs/      # Políticas de monitoreo y reglas FIM
-├── rulesets/           # Detecciones personalizadas para MITRE
-└── evidence/           # Capturas de telemetría y reportes de incidentes
+curl -sL https://db.browser.wazuh.com/install.sh | bash
 
-📊 Evidencia de Operación
+2. Configuración del Entorno Ofensivo
 
-Durante las pruebas de estrés, el sistema procesó 231 eventos críticos en un periodo de 30 minutos, logrando una visibilidad total sobre los vectores de ataque simulados.
-🛡️ Roadmap de Investigación
+Es fundamental aislar las dependencias del script de ataque en un entorno virtual:
+Bash
 
-    Módulo K-VØID | Kernel: Implementación de reglas de auditoría de llamadas al sistema (syscalls).
+python3 -m venv venv
+source venv/bin/activate
+pip install requests  # Dependencia para el simulador de reconocimiento
 
-    Integración Threat Intel: Sincronización automática con feeds de Shodan y VirusTotal.
+3. Ejecución del Ataque y Monitoreo
 
-    Respuesta Automática: Scripts en Python para bloqueo reactivo de IPs maliciosas detectadas por el SIEM.
+Una vez que el agente esté activo y reportando al Manager (ver estado en el Dashboard), ejecute el vector de ataque:
+Bash
 
-Desarrollado por: Sebastian Camargo
+python3 ataque_recon.py [172.20.2.13]
 
-Ingeniero en Seguridad de la Información (E) | Especialista en Hacking Ético y DevSecOps.
+🎯 Conclusión del Proyecto
+
+Este laboratorio valida la eficacia de Wazuh como herramienta de visibilidad centralizada. La capacidad de detectar manipulaciones en el archivo de sudoers y ataques de fuerza bruta en tiempo real permite a los analistas de SOC ejecutar medidas de contención proactivas, reduciendo significativamente el tiempo de exposición (Mean Time to Repair - MTTR) ante incidentes críticos.
