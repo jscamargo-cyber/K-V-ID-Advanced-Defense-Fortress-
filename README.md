@@ -47,16 +47,17 @@ curl -sL https://db.browser.wazuh.com/install.sh | bash
 Es fundamental aislar las dependencias del script de ataque en un entorno virtual:
 Bash
 
-python3 -m venv venv
-source venv/bin/activate
-pip install requests  # Dependencia para el simulador de reconocimiento
+- python3 -m venv venv
+- source venv/bin/activate
+-  pip install nmap
+- pip install requests  # Dependencia para el simulador de reconocimiento
 
 3. Ejecución del Ataque y Monitoreo
 
 Una vez que el agente esté activo y reportando al Manager (ver estado en el Dashboard), ejecute el vector de ataque:
 Bash
 
-python3 ataque_recon.py [172.20.2.13]
+python3 ataque_recon.py [IP_DEL_OBJETIVO]
 
 🎯 Conclusión del Proyecto
 
