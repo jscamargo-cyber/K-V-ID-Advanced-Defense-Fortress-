@@ -1,0 +1,1 @@
+Centro de investigación técnica dedicado a la orquestación de Defensa Activa, Hardening de sistemas y respuesta ante incidentes. Este laboratorio utiliza un stack contenedorizado para la detección proactiva de amenazas mediante el análisis de telemetría y logs en tiempo real.
