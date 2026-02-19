@@ -1,7 +1,7 @@
 
 🛡️ Proyecto K-VØID: Laboratorio de Detección y Respuesta (SIEM/EDR)
 
-Esta es la versión final optimizada para tu README.md. He integrado los datos técnicos del reporte con las instrucciones de replicación en un formato de alto impacto para reclutadores.
+ He integrado los datos técnicos del reporte con las instrucciones de replicación en un formato de alto impacto para reclutadores.
 🛡️ Proyecto K-VØID: Laboratorio de Detección y Respuesta (SIEM/EDR)
 
 Este repositorio contiene las herramientas ofensivas y defensivas utilizadas para simular un entorno de Security Operations Center (SOC) profesional basado en Wazuh y contenedores Docker. El proyecto demuestra el ciclo completo de un incidente: desde la ejecución del vector de ataque hasta la ingesta de telemetría y el análisis de cumplimiento normativo.
